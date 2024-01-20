@@ -1,0 +1,14 @@
+.bg-body-blue {
+    background-color: #BAD0EE;
+}
+
+button.bg-custom,
+button.bg-custom:hover {
+  background-color: rgb(110, 142, 187);
+  border-color: #BAD0EE;
+}
+
+button.bg-custom:hover {
+  background-color: #BAD0EE;
+  border-color: rgb(110, 142, 187);
+}
