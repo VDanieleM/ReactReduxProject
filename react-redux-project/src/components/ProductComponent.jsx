@@ -1,11 +1,20 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addToCart } from "../redux/actions/productActions";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ProductComponent = () => {
   const products = useSelector((state) => state.allProducts.products);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+    navigate("/cart");
+  };
+
   const renderList = products.map((product) => {
     const { id, title, price, category, image } = product;
 
@@ -33,6 +42,13 @@ const ProductComponent = () => {
                 Details
               </Button>
             </Link>
+            <Button
+              variant="primary"
+              className="bg-custom"
+              onClick={() => handleAddToCart(product)}
+            >
+              Add to Cart
+            </Button>
           </Card.Body>
         </Card>
       </div>

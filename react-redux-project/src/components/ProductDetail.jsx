@@ -8,10 +8,10 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import Card from "react-bootstrap/Card";
 import Spinner from "react-bootstrap/Spinner";
-
 const ProductDetail = () => {
   const product = useSelector((state) => state.product);
   const { id, title, price, category, description, image } = product;
+  console.log(id);
   const { productId } = useParams();
   const dispatch = useDispatch();
 
@@ -56,7 +56,7 @@ const ProductDetail = () => {
             height: "100vh",
           }}
         >
-          <Card style={{ width: "30rem" }} id="{id}" className="mt-5 mb-5 ">
+          <Card style={{ width: "30rem" }} key={id} className="mt-5 mb-5 ">
             <Card.Img
               variant="top"
               src={image}
